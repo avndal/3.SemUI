@@ -1,0 +1,75 @@
+/* Styling for the entire page */
+h1 {
+    text-align: center; /* Center the text */
+    font-size: 2.5em; /* Større fontstørrelse for overskriften */
+    margin-bottom: 20px; /* Plads under overskriften */
+    color: #333; /* Mørk farve til overskriften */
+}
+
+h3 {
+    text-align: center; /* Center the text */
+    color: darkblue; /* Farve for h3 */
+    font-size: 1.5em; /* Større skriftstørrelse for h3 */
+    font-weight: bold; /* Gør teksten fed */
+}
+
+/* Wrapper to align sections side by side */
+.sections-wrapper {
+    display: flex; /* Create a flex container for 3 sections */
+    justify-content: space-between; /* Ensure that sections are evenly spaced */
+    margin-top: 20px; /* Space between previous content */
+}
+
+/* Styling for each section */
+.section {
+    width: 30%; /* Each section takes up approximately 30% of the container width */
+    margin: 10px; /* Space between sections */
+}
+
+/* Styling for Get by ID section */
+.get-by-id-section {
+    text-align: left;
+}
+
+.get-by-id-section input,
+.get-by-id-section button {
+    display: block; /* Ensure the input fields and button are block-level elements */
+    margin: 10px 0; /* Space between elements */
+    width: 100%; /* Inputs and buttons should take full width */
+}
+
+/* Styling for Add section */
+.add-section {
+    text-align: center;
+}
+
+.add-section input,
+.add-section button {
+    display: block; /* Ensure the input fields and button are block-level elements */
+    margin: 10px auto; /* Space between elements and center them */
+    width: 80%; /* Set a width for the input fields and buttons */
+}
+
+/* Styling for Delete section */
+.delete-section {
+    text-align: right;
+}
+
+.delete-section input,
+.delete-section button {
+    display: block; /* Ensure the input fields and button are block-level elements */
+    margin: 10px 0; /* Space between elements */
+    width: 100%; /* Inputs and buttons should take full width */
+}
+
+/* Optional: Make the layout responsive */
+@media (max-width: 768px) {
+    .sections-wrapper {
+        flex-direction: column; /* Stack the sections vertically on smaller screens */
+    }
+
+    .section {
+        width: 100%; /* Each section takes full width when stacked */
+        margin-bottom: 20px; /* Space between sections when stacked */
+    }
+}

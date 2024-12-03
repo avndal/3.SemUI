@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,57 +9,73 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
     <title>licensePlates</title>
 </head>
+
 <body>
-<h1>Velkommen til de faste kunder</h1>
-<h1>Find din bil</h1>
+    <br> 
+    <h1>Velkommen til de faste kunder</h1>
+    <br> <br> <br>  
 
-<div id="app" class="container">
-    <h2> Get All Carsss (GET) </h2>
-    <!-- Knap til at hente alle licensePlates -->
-    <button id="getAllButton" v-on:click="getAllLicensePlates" class="btn btn-primary">Get All licensePlates</Get></button>
-    <br>
 
-     <!-- Liste over licensePlates, vises kun hvis der er licensePlates i 'licensePlates' arrayet -->
-     <ul id="licensePlatesList" v-if="licensePlates.length">
-        <li v-for="licensePlate in licensePlates">
-            {{licensePlate.id}} - {{licensePlate.plate}} - {{licensePlate.time}}
-        </li>
-    </ul>
-    <div v-else>Ingen licensePlates</div>
-
-    <h2>Get by ID (GET)</h2>
-    <!-- Inputfelt og knap til at hente licensePlate efter ID -->
-    <input v-model="idToGetBy" placeholder="id" type="number" id="getByIdInput" />
-    <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get By ID</button>
-    <!-- Viser en enkelt licensePlate hvis 'singleLicensePlate' er sat -->
-    <div v-if="singleLicensePlate">
-        {{singleLicensePlate.id}} - {{singleLicensePlate.plate}} - {{singleLicensePlate.time}}
-    </div>
-    <div v-else>No Teacher</div>
-
-    <h2>Add (POST)</h2>
-    <!-- Inputfelter og knap til at tilføje en ny licensePlate -->
-    <input v-model="addData.plate" placeholder="licensePlate plate" type="text" id="inputPlate" />
-    <input v-model="addData.time" placeholder="time" type="text" id="inputTime" />
-    <button v-on:click="addLicensePlate()" class="btn btn-success" id="createButton">Add</button>
-    <!-- Viser en besked hvis 'addMessage' er sat -->
-    <div v-if="addMessage">
-        <div id="addMessage">{{addMessage}}</div>
-    </div>
     
-    <h2>Delete (DELETE)</h2>
-    <!-- Inputfelt og knap til at slette en licensePlate efter ID -->
-    <input v-model.number="deleteId" placeholder="id" type="number" id="deleteInput" />
-    <button v-on:click="deleteLicensePlate(deleteId)" class="btn btn-warning" id="deleteButton">Delete LicensePlate</button>
-    <!-- Viser en besked hvis 'deleteMessage' er sat -->
-    <div v-if="deleteMessage">
-        <div id="deleteMessage"> {{deleteMessage}} </div>
-    </div>
-    
-    
-    <script src="index.js"></script>    
 </body>
+    <h3>Find din bil her</h3>
+    <div id="app" class="container">
+
+        <!-- Get by ID Section (Centered Above Other Sections) -->
+        <div class="get-by-id-section">
+            <h2>Get by ID (GET)</h2>
+            <input v-model="idToGetBy" placeholder="id" type="number" id="getByIdInput" />
+            <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get By ID</button>
+            <div v-if="singleLicensePlate">
+                {{singleLicensePlate.id}} - {{singleLicensePlate.plate}} - {{singleLicensePlate.time}}
+            </div>
+            <div v-else>No LicensePlate</div>
+        </div>
+        <br> <br> <br>
+    
+          
+        <!-- Wrapper for the other three sections -->
+        <div class="sections-wrapper">
+            <!-- Get All Section -->
+            <div class="section">
+                <h2> Get All Carsss (GET) </h2>
+                <button id="getAllButton" v-on:click="getAllLicensePlates" class="btn btn-primary">Get All licensePlates</button>
+                <br>
+
+                <ul id="licensePlatesList" v-if="licensePlates.length">
+                    <li v-for="licensePlate in licensePlates">
+                        {{licensePlate.id}} - {{licensePlate.plate}} - {{licensePlate.time}}
+                    </li>
+                </ul>
+                <div v-else>Ingen licensePlates</div>
+            </div>
+
+            <!-- Add (POST) Section -->
+            <div class="section add-section">
+                <h2>Add (POST)</h2>
+                <input v-model="addData.plate" placeholder="licensePlate plate" type="text" id="inputPlate" />
+                <input v-model="addData.time" placeholder="time" type="text" id="inputTime" />
+                <button v-on:click="addLicensePlate()" class="btn btn-success" id="createButton">Add</button>
+                <div v-if="addMessage">
+                    <div id="addMessage">{{addMessage}}</div>
+                </div>
+            </div>
+
+            <!-- Delete (DELETE) Section -->
+            <div class="section delete-section">
+                <h2>Delete (DELETE)</h2>
+                <input v-model.number="deleteId" placeholder="id" type="number" id="deleteInput" />
+                <button v-on:click="deleteLicensePlate(deleteId)" class="btn btn-warning" id="deleteButton">Delete LicensePlate</button>
+                <div v-if="deleteMessage">
+                    <div id="deleteMessage">{{deleteMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+
 </html>
