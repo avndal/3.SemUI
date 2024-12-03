@@ -8,7 +8,7 @@ Vue.createApp({
             singleLicensePlate: null,
             deleteId: 0,
             deleteMessage: "",
-            addData: { plate: 0, time: "" },
+            addData: { plate: "", time: "" },
             addMessage: "",
         }
     },
