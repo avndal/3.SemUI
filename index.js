@@ -4,7 +4,7 @@ Vue.createApp({
     data() {
         return {
             licensePlates: [],
-            idToGetBy: -1,
+            idToGetBy: 0,
             singleLicensePlate: null,
             deleteId: 0,
             deleteMessage: "",
