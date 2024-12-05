@@ -35,6 +35,21 @@
             <p>Årgang: {{ vehicleData.model_year }}</p>
         </div>
 
+                <!-- Get Image by ID -->
+<div class="get-image-section">
+    <h2>Get Image by ID (GET)</h2>
+    <input v-model="imageId" placeholder="Image ID" type="number" id="getImageInput" />
+    <button v-on:click="getImageById(imageId)" class="btn btn-primary" id="getImageButton">Get Image</button>
+    <br>
+    <div v-if="imageSrc">
+        <h3>Fetched Image:</h3>
+        <img :src="imageSrc" alt="Fetched Image" id="fetchedImage" style="max-width: 400px; max-height: 400px;" />
+    </div>
+    <div v-else>
+        <p>No image found</p>
+    </div>
+</div>
+
         <!-- Get by ID Section (Centered Above Other Sections) -->
         <div class="get-by-id-section">
             <h2>Get by ID (GET)</h2>

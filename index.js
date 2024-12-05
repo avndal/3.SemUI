@@ -1,5 +1,5 @@
 const licensePlateUrl = "http://localhost:5135/api/Licenseplates"
-
+const ImageUrl = "http://localhost:5135/api/Images"
 const vehicleDataUrl = "http://localhost:5135/api/VehicleData/vehicleData"
 
 Vue.createApp({
@@ -14,6 +14,8 @@ Vue.createApp({
             addMessage: "",
             licensePlate: "", // Nummerpladen indtastet af brugeren
             vehicleData: null, // Data om bilen hentet fra API'en
+            imageId: null,
+            imageSrc: null // Base64 billed-URL
         }
     },
     
@@ -70,6 +72,20 @@ Vue.createApp({
                 console.log("Data fra Nummerplade API:", this.vehicleData);
             } catch (error) {
                 alert("Fejl ved hentning af køretøjsdata: " + error.message);
+            }
+        },
+        async getImageById(id) {
+            try {
+                if (!id) {
+                    alert("Please provide a valid Image ID.");
+                    return;
+                }
+                const response = await axios.get(`http://localhost:5135/api/Images/image/${id}`);
+                this.imageSrc = response.data.imageUrl; // Backend skal returnere en 'imageUrl'
+            } catch (error) {
+                console.error('Error fetching image:', error);
+                this.imageSrc = null;
+                alert('Image not found or failed to fetch.');
             }
         },
     }
