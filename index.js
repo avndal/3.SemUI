@@ -1,4 +1,6 @@
-const baseUrl = "http://localhost:5135/api/Licenseplates"
+const licensePlateUrl = "http://localhost:5135/api/Licenseplates"
+
+const vehicleDataUrl = "http://localhost:5135/api/VehicleData/VehicleData"
 
 Vue.createApp({
     data() {
@@ -10,6 +12,8 @@ Vue.createApp({
             deleteMessage: "",
             addData: { plate: "", time: "" },
             addMessage: "",
+            licensePlate: "", // Nummerpladen indtastet af brugeren
+            vehicleData: null, // Data om bilen hentet fra API'en
         }
     },
     
@@ -20,7 +24,7 @@ Vue.createApp({
     methods: {
         async getAllLicensePlates() {
             try {
-                const response = await axios.get(baseUrl)
+                const response = await axios.get(licensePlateUrl)
                 this.licensePlates = response.data
                 console.log(this.licensePlates)
             }
@@ -29,7 +33,7 @@ Vue.createApp({
             }
         },
         async getById(id) {
-            const url = baseUrl + "/" + id
+            const url = licensePlateUrl + "/" + id
             try {
                 const response = await axios.get(url)
                 this.singleLicensePlate = await response.data
@@ -39,7 +43,7 @@ Vue.createApp({
         },
         async addLicensePlate() {
             try {
-                const response = await axios.post(baseUrl, this.addData)
+                const response = await axios.post(licensePlateUrl, this.addData)
                 this.addMessage = response.status + " " + response.statusText
                 this.getAllLicensePlates()
             } catch (ex) {
@@ -47,7 +51,7 @@ Vue.createApp({
             }
         },
         async deleteLicensePlate(deleteId) {
-            const url = baseUrl + "/" + deleteId
+            const url = licensePlateUrl + "/" + deleteId
             try {
                 const response = await axios.delete(url)
                 this.deleteMessage = response.status + " " + response.statusText
@@ -56,5 +60,17 @@ Vue.createApp({
                 alert(ex.message)
             }
         },  
+           // Hent bilens data fra Nummerplade API'en
+           async getVehicleData(licensePlate) {
+            const url = vehicleDataUrl + `/` + licensePlate;
+        
+            try {
+                const response = await axios.get(url);
+                this.vehicleData = response.data.data;  // Gem dataen i vehicleData
+                console.log("Data fra Nummerplade API:", this.vehicleData);
+            } catch (error) {
+                alert("Fejl ved hentning af køretøjsdata: " + error.message);
+            }
+        },
     }
 }).mount("#app")

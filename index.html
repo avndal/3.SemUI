@@ -20,6 +20,21 @@
     <h3>Find din bil her</h3>
     <div id="app" class="container">
 
+        <div class="search-section">
+            <h2>Søg bil via NummerpladeAPI (3. parts)</h2>
+            <input v-model="licensePlate" placeholder="Indtast nummerplade" type="text" id="licensePlateInput" />
+            <button v-on:click="getVehicleData(licensePlate)" class="btn btn-info" id="searchButton">
+                Søg
+            </button>
+        </div>
+
+        <div id="vehicleData" v-if="vehicleData">
+            <h3>Bilinformationer:</h3>
+            <p>Brand: {{ vehicleData.brand }}</p>
+            <p>Model: {{ vehicleData.model }}</p>
+            <p>Årgang: {{ vehicleData.model_year }}</p>
+        </div>
+
         <!-- Get by ID Section (Centered Above Other Sections) -->
         <div class="get-by-id-section">
             <h2>Get by ID (GET)</h2>
