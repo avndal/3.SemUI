@@ -1,6 +1,6 @@
 const licensePlateUrl = "http://localhost:5135/api/Licenseplates"
 
-const vehicleDataUrl = "http://localhost:5135/api/VehicleData/VehicleData"
+const vehicleDataUrl = "http://localhost:5135/api/VehicleData/vehicleData"
 
 Vue.createApp({
     data() {
