@@ -1,6 +1,6 @@
-const licensePlateUrl = "http://localhost:5135/api/Licenseplates"
-const ImageUrl = "http://localhost:5135/api/Images"
-const vehicleDataUrl = "http://localhost:5135/api/VehicleData/vehicleData"
+const licensePlateUrl = "https://licenseplateapi-hwfbeffhemcjasg0.germanywestcentral-01.azurewebsites.net/api/Licenseplates"
+const ImageUrl = "https://licenseplateapi-hwfbeffhemcjasg0.germanywestcentral-01.azurewebsites.net/api/Images"
+const vehicleDataUrl = "https://licenseplateapi-hwfbeffhemcjasg0.germanywestcentral-01.azurewebsites.net/api/VehicleData/vehicledata"
 
 Vue.createApp({
     data() {
@@ -80,7 +80,7 @@ Vue.createApp({
                     alert("Please provide a valid Image ID.");
                     return;
                 }
-                const response = await axios.get(`http://localhost:5135/api/Images/image/${id}`);
+                const response = await axios.get(`https://licenseplateapi-hwfbeffhemcjasg0.germanywestcentral-01.azurewebsites.net/api/Images/image/${id}`);
                 this.imageSrc = response.data.imageUrl; // Backend skal returnere en 'imageUrl'
             } catch (error) {
                 console.error('Error fetching image:', error);
