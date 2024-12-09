@@ -10,13 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>licensePlates</title>
-    <style>
-        .admin-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -76,38 +69,41 @@
           
         <!-- Admin Sections -->
         <div v-if="isAdmin">
-            <!-- Get All Section -->
-            <div class="section">
-                <h2> Get All Carsss (GET) </h2>
-                <button v-on:click="getAllLicensePlates" class="btn btn-primary" id="getAllButton">Get All licensePlates</button>
-                <br>
+            <!-- Wrapper for the other three sections -->
+            <div class="sections-wrapper">
+                <!-- Get All Section -->
+                <div class="section">
+                    <h2> Get All Carsss (GET) </h2>
+                    <button v-on:click="getAllLicensePlates" class="btn btn-primary" id="getAllButton">Get All licensePlates</button>
+                    <br>
 
-                <ul id="licensePlatesList" v-if="licensePlates.length">
-                    <li v-for="licensePlate in licensePlates">
-                        {{licensePlate.id}} - {{licensePlate.plate}} - {{licensePlate.time}}
-                    </li>
-                </ul>
-                <div v-else>Ingen licensePlates</div>
-            </div>
-
-            <!-- Add (POST) Section -->
-            <div class="section add-section">
-                <h2>Add (POST)</h2>
-                <input v-model="addData.plate" placeholder="licensePlate plate" type="text" id="inputPlate" />
-                <input v-model="addData.time" placeholder="time" type="text" id="inputTime" />
-                <button v-on:click="addLicensePlate()" class="btn btn-success" id="createButton">Add</button>
-                <div v-if="addMessage">
-                    <div id="addMessage">{{addMessage}}</div>
+                    <ul id="licensePlatesList" v-if="licensePlates.length">
+                        <li v-for="licensePlate in licensePlates">
+                            {{licensePlate.id}} - {{licensePlate.plate}} - {{licensePlate.time}}
+                        </li>
+                    </ul>
+                    <div v-else>Ingen licensePlates</div>
                 </div>
-            </div>
 
-            <!-- Delete (DELETE) Section -->
-            <div class="section delete-section">
-                <h2>Delete (DELETE)</h2>
-                <input v-model.number="deleteId" placeholder="id" type="number" id="deleteInput" />
-                <button v-on:click="deleteLicensePlate(deleteId)" class="btn btn-warning" id="deleteButton">Delete LicensePlate</button>
-                <div v-if="deleteMessage">
-                    <div id="deleteMessage">{{deleteMessage}}</div>
+                <!-- Add (POST) Section -->
+                <div class="section add-section">
+                    <h2>Add (POST)</h2>
+                    <input v-model="addData.plate" placeholder="licensePlate plate" type="text" id="inputPlate" />
+                    <input v-model="addData.time" placeholder="time" type="text" id="inputTime" />
+                    <button v-on:click="addLicensePlate()" class="btn btn-success" id="createButton">Add</button>
+                    <div v-if="addMessage">
+                        <div id="addMessage">{{addMessage}}</div>
+                    </div>
+                </div>
+
+                <!-- Delete (DELETE) Section -->
+                <div class="section delete-section">
+                    <h2>Delete (DELETE)</h2>
+                    <input v-model.number="deleteId" placeholder="id" type="number" id="deleteInput" />
+                    <button v-on:click="deleteLicensePlate(deleteId)" class="btn btn-warning" id="deleteButton">Delete LicensePlate</button>
+                    <div v-if="deleteMessage">
+                        <div id="deleteMessage">{{deleteMessage}}</div>
+                    </div>
                 </div>
             </div>
         </div>
