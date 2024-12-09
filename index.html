@@ -10,6 +10,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>licensePlates</title>
+    <style>
+        .admin-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,6 +26,11 @@
 
     <h3>Find din bil her</h3>
     <div id="app" class="container">
+
+        <!-- Admin Toggle Button -->
+        <button v-on:click="toggleAdmin" class="btn btn-secondary admin-toggle" id="toggleAdminButton">
+            {{ isAdmin ? 'Switch to User View' : 'Switch to Admin View' }}
+        </button>
 
         <div class="search-section">
             <h2>Søg bil via NummerpladeAPI (3. parts)</h2>
@@ -62,8 +74,8 @@
         </div>
         <br> <br> <br>
           
-        <!-- Wrapper for the other three sections -->
-        <div class="sections-wrapper">
+        <!-- Admin Sections -->
+        <div v-if="isAdmin">
             <!-- Get All Section -->
             <div class="section">
                 <h2> Get All Carsss (GET) </h2>

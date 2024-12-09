@@ -15,7 +15,8 @@ Vue.createApp({
             licensePlate: "", // Nummerpladen indtastet af brugeren
             vehicleData: null, // Data om bilen hentet fra API'en
             imageId: null,
-            imageSrc: null // Base64 billed-URL
+            imageSrc: null, // Base64 billed-URL
+            isAdmin: false // New property to track admin status
         }
     },
     
@@ -88,5 +89,8 @@ Vue.createApp({
                 alert('Image not found or failed to fetch.');
             }
         },
+        toggleAdmin() {
+            this.isAdmin = !this.isAdmin;
+        }
     }
 }).mount("#app")
