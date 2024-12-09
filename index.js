@@ -16,7 +16,10 @@ Vue.createApp({
             vehicleData: null, // Data om bilen hentet fra API'en
             imageId: null,
             imageSrc: null, // Base64 billed-URL
-            isAdmin: false // New property to track admin status
+            isAdmin: false, // New property to track admin status
+            adminUsername: "",
+            adminPassword: "",
+            loginError: ""
         }
     },
     
@@ -91,6 +94,19 @@ Vue.createApp({
         },
         toggleAdmin() {
             this.isAdmin = !this.isAdmin;
+        },
+        login() {
+            if (this.adminUsername === "admin" && this.adminPassword === "1234") {
+                this.isAdmin = true;
+                this.loginError = "";
+            } else {
+                this.loginError = "Invalid username or password";
+            }
+        },
+        logout() {
+            this.isAdmin = false;
+            this.adminUsername = "";
+            this.adminPassword = "";
         }
     }
 }).mount("#app")

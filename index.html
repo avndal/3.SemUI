@@ -20,10 +20,18 @@
     <h3>Find din bil her</h3>
     <div id="app" class="container">
 
-        <!-- Admin Toggle Button -->
-        <button v-on:click="toggleAdmin" class="btn btn-secondary admin-toggle" id="toggleAdminButton">
-            {{ isAdmin ? 'Switch to User View' : 'Switch to Admin View' }}
-        </button>
+        <!-- Admin Login Form -->
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <div v-if="!isAdmin" class="login-section">
+                    <input v-model="adminUsername" placeholder="Username" type="text" class="form-control" />
+                    <input v-model="adminPassword" placeholder="Password" type="password" class="form-control" />
+                    <button v-on:click="login" class="btn btn-primary">Login</button>
+                    <div v-if="loginError" class="text-danger">{{ loginError }}</div>
+                </div>
+                <button v-if="isAdmin" v-on:click="logout" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
 
         <div class="search-section">
             <h2>Søg bil via NummerpladeAPI (3. parts)</h2>
