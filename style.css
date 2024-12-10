@@ -79,3 +79,52 @@ h3 {
     top: 10px;
     right: 10px;
 }
+
+.card {
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    padding: 20px; /* Inner padding */
+    margin: 20px; /* Outer margin */
+    transition: transform 0.2s; /* Smooth transition on hover */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+}
+
+/* Make layout responsive */
+@media (max-width: 768px) {
+    .card {
+        margin: 10px; /* Smaller margin on smaller screens */
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-section input {
+    margin-right: 10px;
+}
+
+.login-section button {
+    margin-left: 10px;
+}
