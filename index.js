@@ -19,7 +19,9 @@ Vue.createApp({
             isAdmin: false, // New property to track admin status
             adminUsername: "",
             adminPassword: "",
-            loginError: ""
+            loginError: "",
+            isDarkMode: false, // Track dark mode status
+            showLogin: false, // Kontrollér visning af login-formularen
         }
     },
     
@@ -95,6 +97,9 @@ Vue.createApp({
         toggleAdmin() {
             this.isAdmin = !this.isAdmin;
         },
+        toggleLogin() {
+            this.showLogin = !this.showLogin;
+        },
         login() {
             if (this.adminUsername === "admin" && this.adminPassword === "1234") {
                 this.isAdmin = true;
@@ -107,6 +112,10 @@ Vue.createApp({
             this.isAdmin = false;
             this.adminUsername = "";
             this.adminPassword = "";
-        }
+        },
+        toggleDarkMode() {
+            this.isDarkMode = !this.isDarkMode;
+            document.body.classList.toggle('dark-mode', this.isDarkMode);
+        },
     }
 }).mount("#app")
