@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>licensePlates</title>
 </head>
 
@@ -16,7 +17,10 @@
         <div :class="{'dark-mode': isDarkMode}" class="header">
             <h1 class="title">Velkommen til Montion Camera API</h1>
             <div class="header-controls d-flex align-items-center">
-                <button v-on:click="toggleDarkMode" class="btn btn-secondary me-2">Toggle Dark Mode</button>
+                <span v-on:click="toggleDarkMode" class="dark-mode-toggle">
+                    <i v-if="isDarkMode" class="bi bi-moon-stars-fill"></i>
+                    <i v-else class="bi bi-brightness-high"></i>
+                </span>                
                 <button v-on:click="toggleLogin" class="btn btn-primary">Login</button>
                 <div v-if="showLogin" class="login-section card p-3 position-absolute" style="top: 60px; right: 20px; z-index: 100;">
                     <input v-model="adminUsername" placeholder="Username" type="text" class="form-control mb-2" />

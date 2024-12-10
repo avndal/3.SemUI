@@ -116,6 +116,6 @@ Vue.createApp({
         toggleDarkMode() {
             this.isDarkMode = !this.isDarkMode;
             document.body.classList.toggle('dark-mode', this.isDarkMode);
-        },
+        },  
     }
 }).mount("#app")

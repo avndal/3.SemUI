@@ -167,8 +167,35 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: url('bag.webp');
-    background-size: cover;
-    background-position: center;
+    background-repeat: repeat; /* Gentag både vandret og lodret */
+    background-size: auto; /* Brug billedets oprindelige størrelse */
+    background-position: top left; /* Start gentagelsen fra toppen venstre */
     opacity: 0.2; /* Juster opaciteten efter behov */
     z-index: -1; /* Sørg for, at billedet er bag alt andet indhold */
+}
+
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 40px;
+    height: 40px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #007bff;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Tilføjer mellemrum mellem ikoner */
 }
