@@ -10,7 +10,11 @@ Vue.createApp({
             singleLicensePlate: null,
             deleteId: 0,
             deleteMessage: "",
-            addData: { plate: "", time: "" },
+            addData: { // Initialisering af addData
+                plate: "", // Nummerplade
+                time: "", // Tid
+                imagePath: "string" // Standardværdi for imagePath da funktionaliteten ikke er implementeret endnu
+            },
             addMessage: "",
             licensePlate: "", // Nummerpladen indtastet af brugeren
             vehicleData: null, // Data om bilen hentet fra API'en
@@ -51,13 +55,18 @@ Vue.createApp({
         },
         async addLicensePlate() {
             try {
-                const response = await axios.post(licensePlateUrl, this.addData)
-                this.addMessage = response.status + " " + response.statusText
-                this.getAllLicensePlates()
+                console.log(this.addData); // Log data før POST
+                const response = await axios.post(licensePlateUrl, this.addData, {
+                    headers: { "Content-Type": "application/json" }
+                });
+                this.addMessage = response.status + " " + response.statusText;
+                this.getAllLicensePlates();
             } catch (ex) {
-                alert(ex.message)
+                console.error("Error:", ex.response.data); // Log detaljer om fejlen
+                alert(ex.message);
             }
-        },
+        }
+         ,
         async deleteLicensePlate(deleteId) {
             const url = licensePlateUrl + "/" + deleteId
             try {
@@ -119,3 +128,4 @@ Vue.createApp({
         },  
     }
 }).mount("#app")
+
