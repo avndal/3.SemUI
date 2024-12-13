@@ -166,7 +166,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('bag.webp');
+    background-image: url('bag.jpg');
     background-repeat: repeat; /* Gentag både vandret og lodret */
     background-size: auto; /* Brug billedets oprindelige størrelse */
     background-position: top left; /* Start gentagelsen fra toppen venstre */
